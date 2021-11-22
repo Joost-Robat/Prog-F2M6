@@ -2,7 +2,7 @@
 
 namespace Database___prog
 {
-    class Program
+    class Program : Inventory
     {
         static void Main(string[] args)
         {
