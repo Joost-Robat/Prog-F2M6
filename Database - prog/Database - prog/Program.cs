@@ -10,12 +10,16 @@ namespace Database___prog
     {
         static void Main(string[] args)
         {
-            
+            Klaslokaal _class = new Klaslokaal();
             while (true)
             {
                 Console.WriteLine("Input 1 to add a person to the class, input 2 to read a person by inputting their ID\n:");
                 string userInput = Console.ReadLine();
                 if(userInput == "1")
+                {
+                    _class.AddToClass();
+                }
+                if (userInput == "2")
                 {
                     
                 }

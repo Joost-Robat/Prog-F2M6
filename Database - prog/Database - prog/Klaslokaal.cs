@@ -28,21 +28,19 @@ namespace Database___prog
             while(read == true)
             {
                 string userInput = Console.ReadLine();
-                if (userInput == "yes" || userInput == "Yes")
+                if (userInput.ToLower() == "yes")
                 {
                     string[] input = { added, addedAge, addedRole };
-                    string fileName = "person" + counter + ".txt";
-                    File.WriteAllLinesAsync(fileName, input);
                     
                 }
-                else if (userInput.toLower() == "no")
+                else if (userInput.ToLower() == "no")
                 {
                     read = false;
-                    return;
+                    continue;
                 }
-                else if (userInput == "x")
+                else if (userInput.ToLower() == "x")
                 {
-                    
+                    break;                 
                 }
                 else
                 {
@@ -51,7 +49,7 @@ namespace Database___prog
                 }
             }
         }
-        protected void ReadFromClass()
+        public void ReadFromClass()
         {
             Console.WriteLine("Input ID to read from database:\n");
             string userInput = Console.ReadLine();
