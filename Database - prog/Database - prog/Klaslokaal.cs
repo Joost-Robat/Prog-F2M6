@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Database___prog
 {
@@ -10,13 +11,45 @@ namespace Database___prog
     {
         private int counter;
         private bool read;
+        public string input;
+        public List<Person> people;
+        public Person person;
+
         public Klaslokaal()
         {
-
+            people = new List<Person>();
         }
 
         public void AddToClass()
         {
+            Console.Clear();
+            person = new Person();
+            Console.Write("\nInput name: ");
+            input = Console.ReadLine();
+            person.SetName(input);
+            Console.Write("\nInput age: ");
+            input = Console.ReadLine();
+            person.SetAge(input);
+            Console.Write("\nInput role: ");
+            input = Console.ReadLine();
+            person.SetRole(input);
+            Console.WriteLine("Do you want to save " + person.GetName() + "? y/n");
+            input = Console.ReadLine();
+            if(input.ToLower() == "y")
+            {
+                people.Add(person);
+            }
+            else if(input.ToLower() == "n")
+            {
+                AddToClass();
+            }
+            else
+            {
+                Console.WriteLine("Inproper input, restarting...");
+                Thread.Sleep(2000);
+                AddToClass();
+            }
+            /*
             Console.WriteLine("Person added:\n");
             string added = Console.ReadLine();
             Console.WriteLine("Added persons age:\n");
@@ -30,7 +63,7 @@ namespace Database___prog
                 string userInput = Console.ReadLine();
                 if (userInput.ToLower() == "yes")
                 {
-                    string[] input = { added, addedAge, addedRole };
+                    input = { added, addedAge, addedRole };
                     
                 }
                 else if (userInput.ToLower() == "no")
@@ -47,13 +80,38 @@ namespace Database___prog
                     Console.WriteLine("Input invalid, please try again.");
                     return;
                 }
-            }
+            }*/
         }
         public void ReadFromClass()
         {
             Console.WriteLine("Input ID to read from database:\n");
             string userInput = Console.ReadLine();
             
+        }
+        public Person[] GetAllPeople()
+        {
+            return people.ToArray();
+        }
+        public void ListAllPeople()
+        {
+            for (int i = 0; i < people.Count; i++)
+            {
+                Console.WriteLine(i + " " + GetAllPeople()[i].GetName());
+            }
+        }
+        public void ListPeopleWithAge(string input)
+        {
+            for (int i = 0; i < people.Count; i++)
+            {
+                if(GetAllPeople()[i].GetAge() == input)
+                {
+                    Console.WriteLine(i + " " + GetAllPeople()[i].GetName());
+                    Console.WriteLine("Age: " + GetAllPeople()[i].GetAge());
+                    Console.WriteLine("Role: " + GetAllPeople()[i].GetRole());
+                }
+
+                //Console.WriteLine(i + " " + GetAllClasses()[i].GetName());
+            }
         }
     }
 }

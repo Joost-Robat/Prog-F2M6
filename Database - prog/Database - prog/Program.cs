@@ -8,20 +8,29 @@ namespace Database___prog
 {
     class Program : Klaslokaal
     {
+        public Person currentPerson;
         static void Main(string[] args)
         {
             Klaslokaal _class = new Klaslokaal();
             while (true)
             {
-                Console.WriteLine("Input 1 to add a person to the class, input 2 to read a person by inputting their ID\n:");
+                Console.WriteLine("1 To add to class, 2 to read from class, 3 to filter with age from class\n");
                 string userInput = Console.ReadLine();
                 if(userInput == "1")
                 {
                     _class.AddToClass();
                 }
-                if (userInput == "2")
+                else if (userInput == "2")
                 {
-                    
+                    Console.WriteLine("");
+                    _class.GetAllPeople();
+                    _class.ListAllPeople();
+                }
+                else if(userInput == "3")
+                {
+                    Console.Write("\nChoose age filter: ");
+                    string input = Console.ReadLine();
+                    _class.ListPeopleWithAge(input);
                 }
             }
         }
