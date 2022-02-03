@@ -109,8 +109,18 @@ namespace Database___prog
                     Console.WriteLine("Age: " + GetAllPeople()[i].GetAge());
                     Console.WriteLine("Role: " + GetAllPeople()[i].GetRole());
                 }
-
-                //Console.WriteLine(i + " " + GetAllClasses()[i].GetName());
+            }
+        }
+        public void CheckForID(int input)
+        {
+            for (int i = 0; i < people.Count; i++)
+            {
+                if(i == input)
+                {
+                    Console.WriteLine(i + " " + GetAllPeople()[i].GetName());
+                    Console.WriteLine("Age: " + GetAllPeople()[i].GetAge());
+                    Console.WriteLine("Role: " + GetAllPeople()[i].GetRole());
+                }
             }
         }
     }

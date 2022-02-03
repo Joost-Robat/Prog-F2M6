@@ -25,6 +25,22 @@ namespace Database___prog
                     Console.WriteLine("");
                     _class.GetAllPeople();
                     _class.ListAllPeople();
+                    Console.WriteLine("Would you like to take a close look at someones informations? Y/N\n");
+                    userInput = Console.ReadLine();
+                    if(userInput.ToLower() == "y")
+                    {
+                        Console.Write("I would like to take a look at ID : ");
+                        userInput = Console.ReadLine();
+                        _class.CheckForID(Int32.Parse(userInput));
+                    }
+                    else if (userInput.ToLower() == "n")
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else if(userInput == "3")
                 {
